@@ -1,5 +1,6 @@
-import { OptionType } from 'src/constants/articleProps';
-import { Text } from 'src/ui/text';
+import { OptionType } from '../../../src/constants/articleProps';
+import { Text } from '../../components/text';
+import { Spacing } from '../../components/spacing';
 import { Option } from './Option';
 
 import styles from './RadioGroup.module.scss';
@@ -24,6 +25,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
 					<Text weight={800} size={12} uppercase>
 						{title}
 					</Text>
+					<Spacing size={4} />
 				</>
 			)}
 			<div className={styles.group}>
