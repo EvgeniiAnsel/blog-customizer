@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import styles from './ArticleParamsForm.module.scss';
-import { ArrowButton } from '../../components/arrow-button';
-import { Button } from '../../components/button';
+import { ArrowButton } from 'src/ui/arrow-button';
+import { Button } from 'src/ui/button';
 import { useState } from 'react';
-import { RadioGroup } from '../radio-group';
-import { Separator } from '../separator';
+import { RadioGroup } from 'src/ui/radio-group';
+import { Separator } from 'src/ui/separator';
 import { Spacing } from '../spacing';
-import { Text } from '../../components/text';
-import { Select } from '../select';
+import { Text } from 'src/ui/text';
+import { Select } from 'src/ui/select';
 import {
 	fontFamilyOptions,
 	fontColors,
@@ -15,6 +15,7 @@ import {
 	contentWidthArr,
 	fontSizeOptions,
 	defaultArticleState,
+	OptionType,
 } from '../../../src/constants/articleProps';
 
 interface ArticleParamsFormProps {
@@ -37,7 +38,7 @@ export const ArticleParamsForm = ({
 		setArticleState(defaultArticleState);
 	};
 
-	const updateSetting = (field: keyof typeof settings, value: any) => {
+	const updateSetting = (field: keyof typeof settings, value: OptionType) => {
 		setSettings((prev) => ({ ...prev, [field]: value }));
 	};
 

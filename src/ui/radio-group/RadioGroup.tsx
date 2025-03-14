@@ -1,5 +1,5 @@
 import { OptionType } from '../../../src/constants/articleProps';
-import { Text } from '../../components/text';
+import { Text } from 'src/ui/text';
 import { Spacing } from '../../components/spacing';
 import { Option } from './Option';
 
