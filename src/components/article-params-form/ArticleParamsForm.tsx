@@ -2,10 +2,10 @@ import clsx from 'clsx';
 import styles from './ArticleParamsForm.module.scss';
 import { ArrowButton } from 'src/ui/arrow-button';
 import { Button } from 'src/ui/button';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { RadioGroup } from 'src/ui/radio-group';
 import { Separator } from 'src/ui/separator';
-import { Spacing } from '../spacing';
+import { Spacing } from '../../ui/spacing';
 import { Text } from 'src/ui/text';
 import { Select } from 'src/ui/select';
 import {
@@ -17,6 +17,7 @@ import {
 	defaultArticleState,
 	OptionType,
 } from '../../../src/constants/articleProps';
+import { useOutsideClickClose } from '../../../src/ui/select/hooks/useOutsideClickClose';
 
 interface ArticleParamsFormProps {
 	setArticleState: (value: typeof defaultArticleState) => void;
@@ -27,6 +28,14 @@ export const ArticleParamsForm = ({
 }: ArticleParamsFormProps) => {
 	const [open, setOpen] = useState(false);
 	const [settings, setSettings] = useState(defaultArticleState);
+
+	const sidebarRef = useRef<HTMLDivElement>(null);
+
+	useOutsideClickClose({
+		isOpen: open,
+		rootRef: sidebarRef,
+		onChange: (newValue) => setOpen(newValue),
+	});
 
 	const handleApply = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -46,6 +55,7 @@ export const ArticleParamsForm = ({
 		<>
 			<ArrowButton isOpen={open} setOpen={setOpen} />
 			<aside
+				ref={sidebarRef}
 				className={clsx(styles.container, { [styles.container_open]: open })}>
 				<form
 					className={styles.form}
@@ -55,6 +65,7 @@ export const ArticleParamsForm = ({
 						Задайте параметры
 					</Text>
 					<Spacing size={50} />
+
 					<Select
 						title='Шрифт'
 						selected={settings.fontFamilyOption}
@@ -62,6 +73,7 @@ export const ArticleParamsForm = ({
 						onChange={(option) => updateSetting('fontFamilyOption', option)}
 					/>
 					<Spacing size={50} />
+
 					<RadioGroup
 						name='fontSize'
 						options={fontSizeOptions}

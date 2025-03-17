@@ -1,8 +1,6 @@
-import { OptionType } from '../../../src/constants/articleProps';
-import { Text } from 'src/ui/text';
-import { Spacing } from '../../components/spacing';
+import { OptionType } from 'src/constants/articleProps';
+import { Text } from '../text';
 import { Option } from './Option';
-
 import styles from './RadioGroup.module.scss';
 
 type RadioGroupProps = {
@@ -15,17 +13,16 @@ type RadioGroupProps = {
 
 export const RadioGroup = (props: RadioGroupProps) => {
 	const { name, options, selected, onChange, title } = props;
-
 	const handleChange = (option: OptionType) => onChange?.(option);
 
 	return (
 		<div className={styles.container}>
-			{title && (
+			{title && ( // Убираем Spacing из RadioGroup
 				<>
 					<Text weight={800} size={12} uppercase>
 						{title}
 					</Text>
-					<Spacing size={4} />
+					{/* Удален Spacing size={4} */}
 				</>
 			)}
 			<div className={styles.group}>
