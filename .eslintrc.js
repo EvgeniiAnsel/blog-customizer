@@ -9,11 +9,11 @@ module.exports = {
 		react: {
 			version: 'detect',
 		},
-		"import/resolver": {
+		'import/resolver': {
 			typescript: {
-				project: "tsconfig.json",
-			}
-		}
+				project: 'tsconfig.json',
+			},
+		},
 	},
 	extends: [
 		'plugin:@typescript-eslint/recommended',
@@ -25,6 +25,7 @@ module.exports = {
 		'plugin:import/warnings',
 		'plugin:import/typescript',
 		'plugin:eslint-comments/recommended',
+		'plugin:storybook/recommended',
 	],
 	rules: {
 		semi: [2, 'always'],
@@ -39,5 +40,11 @@ module.exports = {
 		'react-hooks/exhaustive-deps': 'off',
 		'import/no-named-as-default': 'off',
 		'@typescript-eslint/no-empty-function': 'off',
+		'prettier/prettier': [
+			'error',
+			{
+				endOfLine: 'auto',
+			},
+		],
 	},
 };
